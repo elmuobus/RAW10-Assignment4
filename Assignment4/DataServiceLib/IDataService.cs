@@ -11,8 +11,8 @@ namespace DataServiceLib
         public bool DeleteCategory(int id);
         public bool UpdateCategory(int id, string name, string description);
         public Product GetProduct(int id);
-        public IList<Product> GetProductByCategory(int categoryId);
-        public IList<Product> GetProductByName(string name);
+        public IList<ProductByCategoryDto> GetProductByCategory(int categoryId);
+        public IList<ProductByNameDto> GetProductByName(string name);
         public IList<Product> GetProducts();
         public bool DeleteProduct(int id);
         public Order GetOrder(int id);

@@ -43,9 +43,9 @@ namespace WebApi.Controllers
             var products = _dataService.GetProductByCategory(id);
 
             if (products.Count == 0)
-                return NotFound(products.Select(x => GetProductViewMode(x)));
+                return NotFound(products);
 
-            return Ok(products.Select(x => GetProductViewMode(x)));
+            return Ok(products);
         }
         
         [HttpGet("name/{str}")]
@@ -54,9 +54,9 @@ namespace WebApi.Controllers
             var products = _dataService.GetProductByName(str);
 
             if (products.Count == 0)
-                return NotFound(products.Select(x => GetProductViewMode(x)));
+                return NotFound(products);
 
-            return Ok(products.Select(x => GetProductViewMode(x)));
+            return Ok(products);
         }
 
         private ProductViewModel GetProductViewMode(Product category)

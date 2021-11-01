@@ -9,10 +9,16 @@ namespace DataServiceLib.Domain
         public int UnitsInStock { get; set; }
         public int CategoryId { get; set; }        
         public Category Category { get; set; }
-        
-        public override string ToString()
-        {
-            return $"Id={Id}, Name={Name}, Category={Category}";
-        }
     }
+
+    public class ProductByCategoryDto
+    {
+        public string Name { get; set; }
+        public string CategoryName { get; set; }
+    }
+    public class ProductByNameDto
+    {
+        public string ProductName { get; set; }
+    }
+    
 }

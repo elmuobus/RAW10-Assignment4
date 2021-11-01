@@ -68,16 +68,26 @@ namespace DataServiceLib
                 .FirstOrDefault(x => x.Id == id);
         }
 
-        public IList<Product> GetProductByCategory(int categoryId)
+        public IList<ProductByCategoryDto> GetProductByCategory(int categoryId)
         {
             return _ctx.Products.Where(x => x.CategoryId == categoryId)
                 .Include(x => x.Category)
+                .Select(x => new ProductByCategoryDto()
+                {
+                    Name = x.Name,
+                    CategoryName = x.Category.Name,
+                })
                 .ToList();
         }
 
-        public IList<Product> GetProductByName(string name)
+        public IList<ProductByNameDto> GetProductByName(string name)
         {
-            return _ctx.Products.Where(x => x.Name.Contains(name)).ToList();
+            return _ctx.Products.Where(x => x.Name.Contains(name))
+                .Select(x => new ProductByNameDto()
+                {
+                    ProductName = x.Name,
+                })
+                .ToList();
         }
         
         public IList<Product> GetProducts()
